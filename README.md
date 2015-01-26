@@ -7,7 +7,7 @@ GPL3 LICENCE for MOSAIC-GUI versions and sources
 
 Build with Netbeans(c)
 
-Official website : http://mosaicgui.imbert.perso.sfr.fr
+Official website : http://mosaicgui.ddns.net
 
 Mail : mosaicgui.imbert@sfr.fr
 
