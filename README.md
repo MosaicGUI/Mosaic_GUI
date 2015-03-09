@@ -12,10 +12,9 @@ Official website : http://mosaicgui.ddns.net
 
 Mail : mosaicgui.imbert@gmail.com
 
-Donators :
+# Donators :
 
 Thank you very much for your help :
 
 PP from France : 5 euros
 
-Don't hesitate to contact me :)
