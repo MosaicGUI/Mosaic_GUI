@@ -2,6 +2,8 @@
 //mosaicgui.imbert@sfr.fr
 //GPLv3 licence
 
+//Normal filter : search the nearest color of the pixel from the palette
+
 package mosaic_gui;
 
 import java.awt.Color;

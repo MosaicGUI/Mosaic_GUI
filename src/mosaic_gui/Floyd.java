@@ -1,6 +1,8 @@
 //Author : Pierre-Aime IMBERT
-//mosaicgui.imbert@sfr.fr
+//mosaicgui.imbert@gmail.com
 //GPLv3 licence
+
+//Floyd Steinberg filter with color blinking reduced by 25%
 
 package mosaic_gui;
 

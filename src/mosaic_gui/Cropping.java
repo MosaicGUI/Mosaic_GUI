@@ -1,5 +1,5 @@
 //Author : Pierre-Aime IMBERT
-//mosaicgui.imbert@sfr.fr
+//mosaicgui.imbert@gmail.com
 //GPLv3 licence
 
 package mosaic_gui;
@@ -57,7 +57,6 @@ public class Cropping extends JPanel
  
     public void setClip(int x, int y)
         {
-        // keep clip within raster
         int x0 = (getWidth() - size.width)/2;
         int y0 = (getHeight() - size.height)/2;
         if(x < x0 || x + clip.width  > x0 + size.width || y < y0 || y + clip.height > y0 + size.height) return;
@@ -96,7 +95,6 @@ public class Cropping extends JPanel
             return;
             }
         
-        //Destroy the complete Cropping Frame by destroy all his components
         Mosaic_GUI.f.removeAll();
         Mosaic_GUI.f.revalidate();
         Mosaic_GUI.f.repaint();

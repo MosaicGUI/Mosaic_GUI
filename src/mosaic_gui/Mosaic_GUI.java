@@ -2,6 +2,8 @@
 //mosaicgui.imbert@sfr.fr
 //GPLv3 licence
 
+//Main GUI and program of Mosaic_GUI
+
 package mosaic_gui;
 
 import java.awt.Color;
@@ -23,10 +25,6 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-/**
- *
- * @author Imbert Pierre-Aime
- */
 public class Mosaic_GUI extends javax.swing.JFrame 
     {
     static JFrame f;
@@ -82,11 +80,11 @@ public class Mosaic_GUI extends javax.swing.JFrame
         jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Mosaic_GUI V1");
+        setTitle("Mosaic_GUI V2");
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
-        jLabel1.setText("Version 1. Courriel : mosaicgui.imbert@sfr.fr");
+        jLabel1.setText("Version 2. Courriel : mosaicgui.imbert@gmail.com");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Etape 1 : Charger une image");
@@ -200,7 +198,7 @@ public class Mosaic_GUI extends javax.swing.JFrame
         jLabel11.setText("(0 = taille originale. Idéal pour le mode \"Figurines\")");
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
-        jLabel12.setText("Author : IMBERT PIERRE-AIME");
+        jLabel12.setText("IMBERT PIERRE-AIME");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -249,14 +247,14 @@ public class Mosaic_GUI extends javax.swing.JFrame
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5)
-                        .addGap(32, 53, Short.MAX_VALUE))
+                        .addGap(32, 52, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
@@ -330,36 +328,95 @@ public class Mosaic_GUI extends javax.swing.JFrame
             }
         fc.setAcceptAllFileFilterUsed(false);
         
-        //SI ELLE RETOURNE UNE BONNE VALEUR
         int returnVal = fc.showOpenDialog(fc);
         if (returnVal == JFileChooser.APPROVE_OPTION) 
             {
             try 
                 {
-                //ON RECUPERE LE FICHIER
                 File file = fc.getSelectedFile();
                 
-                //ON MET LE FICHIER DANS UN BUFFER AFIN DE LE TRAITER
                 BufferedImage carac=ImageIO.read(file);
                 
-                Cropping test = new Cropping(carac);
-                ClipMover mover = new ClipMover(test);
-                test.addMouseListener(mover);
-                test.addMouseMotionListener(mover);
-                f = new JFrame();
-                f.setIconImage(i);
-                f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                f.setResizable(false);
-                f.getContentPane().add(new JScrollPane(test));
-                f.getContentPane().add(test.getUIPanel(), "South");
-                if (lang==1) f.setTitle("Selectionnez la zone de votre image souhaitée");
-                else if (lang==2) f.setTitle("Crop an area of your picture");
-                if(carac.getWidth()>700 && carac.getHeight()>700) f.setSize(700,700);
-                else if(carac.getWidth()>700) f.setSize(700,carac.getHeight()+75);
-                else if(carac.getHeight()>700) f.setSize(carac.getWidth()+15,700);
-                else f.setSize(carac.getWidth()+15,carac.getHeight()+75);
-                f.setLocation(0,0);
-                f.setVisible(true);
+                if(carac.getHeight()>1000 && carac.getHeight()<=carac.getWidth())
+                    {
+                    float factor=(float)1000/(float)carac.getHeight();
+                    float width=(float)carac.getWidth()*factor;
+                    float height=(float)carac.getHeight()*factor;
+                    Image scaledImg = carac.getScaledInstance((int)width, (int)height, Image.SCALE_SMOOTH);
+                    BufferedImage thumbnail = new BufferedImage((int)width, (int)height, BufferedImage.TYPE_INT_ARGB);
+                    thumbnail.createGraphics().drawImage(scaledImg,0,0,null);
+                                      
+                    Cropping test = new Cropping(thumbnail);
+                    ClipMover mover = new ClipMover(test);
+                    test.addMouseListener(mover);
+                    test.addMouseMotionListener(mover);
+                    f = new JFrame();
+                    f.setIconImage(i);
+                    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    f.setResizable(false);
+                    f.getContentPane().add(new JScrollPane(test));
+                    f.getContentPane().add(test.getUIPanel(), "South");
+                    if (lang==1) f.setTitle("Selectionnez la zone de votre image souhaitée");
+                    else if (lang==2) f.setTitle("Crop an area of your picture");
+                    if(carac.getWidth()>700 && carac.getHeight()>700) f.setSize(700,700);
+                    else if(carac.getWidth()>700) f.setSize(700,carac.getHeight()+75);
+                    else if(carac.getHeight()>700) f.setSize(carac.getWidth()+15,700);
+                    else f.setSize(carac.getWidth()+15,carac.getHeight()+75);
+                    f.setLocation(0,0);
+                    f.setVisible(true);
+                    }
+                
+                else if(carac.getWidth()>1000 && carac.getHeight()>=carac.getWidth())
+                    {
+                    float factor=(float)1000/(float)carac.getWidth();
+                    float width=(float)carac.getWidth()*factor;
+                    float height=(float)carac.getHeight()*factor;
+                    Image scaledImg = carac.getScaledInstance((int)width, (int)height, Image.SCALE_SMOOTH);
+                    BufferedImage thumbnail = new BufferedImage((int)width, (int)height, BufferedImage.TYPE_INT_ARGB);
+                    thumbnail.createGraphics().drawImage(scaledImg,0,0,null);
+                                      
+                    Cropping test = new Cropping(thumbnail);
+                    ClipMover mover = new ClipMover(test);
+                    test.addMouseListener(mover);
+                    test.addMouseMotionListener(mover);
+                    f = new JFrame();
+                    f.setIconImage(i);
+                    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    f.setResizable(false);
+                    f.getContentPane().add(new JScrollPane(test));
+                    f.getContentPane().add(test.getUIPanel(), "South");
+                    if (lang==1) f.setTitle("Selectionnez la zone de votre image souhaitée");
+                    else if (lang==2) f.setTitle("Crop an area of your picture");
+                    if(carac.getWidth()>700 && carac.getHeight()>700) f.setSize(700,700);
+                    else if(carac.getWidth()>700) f.setSize(700,carac.getHeight()+75);
+                    else if(carac.getHeight()>700) f.setSize(carac.getWidth()+15,700);
+                    else f.setSize(carac.getWidth()+15,carac.getHeight()+75);
+                    f.setLocation(0,0);
+                    f.setVisible(true);
+                    }
+                
+                else
+                    {
+                    Cropping test = new Cropping(carac);
+                    ClipMover mover = new ClipMover(test);
+                    test.addMouseListener(mover);
+                    test.addMouseMotionListener(mover);
+                    f = new JFrame();
+                    f.setIconImage(i);
+                    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    f.setResizable(false);
+                    f.getContentPane().add(new JScrollPane(test));
+                    f.getContentPane().add(test.getUIPanel(), "South");
+                    if (lang==1) f.setTitle("Selectionnez la zone de votre image souhaitée");
+                    else if (lang==2) f.setTitle("Crop an area of your picture");
+                    if(carac.getWidth()>700 && carac.getHeight()>700) f.setSize(700,700);
+                    else if(carac.getWidth()>700) f.setSize(700,carac.getHeight()+75);
+                    else if(carac.getHeight()>700) f.setSize(carac.getWidth()+15,700);
+                    else f.setSize(carac.getWidth()+15,carac.getHeight()+75);
+                    f.setLocation(0,0);
+                    f.setVisible(true);
+                    }
+                
                 } 
             catch (IOException ex) 
                 {
@@ -373,7 +430,7 @@ public class Mosaic_GUI extends javax.swing.JFrame
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //CREATION DE LA FENETRE "OUVRIR"
+
         final JFileChooser fc = new JFileChooser();
         if (lang==1)
             {
@@ -391,14 +448,11 @@ public class Mosaic_GUI extends javax.swing.JFrame
         fc.setAcceptAllFileFilterUsed(false);
         
 
-        //SI ELLE RETOURNE UNE BONNE VALEUR
         int returnVal = fc.showOpenDialog(fc);
         if (returnVal == JFileChooser.APPROVE_OPTION) 
             {
-            //ON RECUPERE LE FICHIER
             File filepalette = fc.getSelectedFile();
  
-            //ON LIT LE FICHIER TXT DE LA PALETTE
             Scanner scanner=null;
             String word=null;
             nombrecouleurs=0;
@@ -440,7 +494,7 @@ public class Mosaic_GUI extends javax.swing.JFrame
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        //CREATION DE LA FENETRE "OUVRIR"
+
         final JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         if (lang==1)
@@ -451,12 +505,10 @@ public class Mosaic_GUI extends javax.swing.JFrame
             {
             fc.setDialogTitle("Choose a directory to save your project");
             }
-        
-        //SI ELLE RETOURNE UNE BONNE VALEUR
+      
         int returnVal = fc.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) 
             {
-            //ON MEMORISE LE DOSSIER COMPLET GRACE AUX \\
             String dir = fc.getSelectedFile() +"\\";
             File file=new File(System.getProperty("user.home")+"\\thumbnail.png");
         
@@ -469,7 +521,6 @@ public class Mosaic_GUI extends javax.swing.JFrame
                 String taillemotifs = jTextField1.getText();
                 String longueurpatron = jTextField2.getText();
                 
-                //Hack detection for no change size
                 float tailleprojet=0;
                 if(Float.parseFloat(longueurpatron)==0)
                     {
@@ -529,8 +580,7 @@ public class Mosaic_GUI extends javax.swing.JFrame
                                 }
                             }
                         }
-                    
-                    //Ecriture du patron HTML    
+                        
                     file = new File(dir+"index.html");
                     if (!file.exists()) 
                         {
@@ -548,8 +598,8 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     bw.write(content + "\r\n");
                     content = "<body>";
                     bw.write(content + "\r\n");
-                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V1</h1>";
-                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V1</h1>";
+                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V2</h1>";
+                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V2</h1>";
                     bw.write(content + "\r\n");
                     content = "<p style='text-align: center;'><img src=./image.png></p>";
                     bw.write(content + "\r\n");
@@ -558,8 +608,8 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     xxx=Patron.getWidth()*xxx;
                     float yyy = Float.parseFloat(temp);
                     yyy=Patron.getHeight()*yyy;
-                    if (lang==1) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Taille du projet : " + xxx + "x" + yyy + " mm</p>";
-                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm</p>";
+                    if (lang==1) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Taille du projet : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net'>Aller au site officiel</a></p>";
+                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net'>Go to the official website</a></p>";
                     bw.write(content + "\r\n");
                     if (lang==1) content = "<h2>Palette :</h2>";
                     else if (lang==2) content = "<h2>Color chart :</h2>";
@@ -567,6 +617,18 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     content = "<p>";
                     bw.write(content);
                     int nbpixels=0;
+                    
+                    int total=0;
+                    for (int k=0;k<nombrecouleurs;k++)
+                        {
+                        total=total+palette_couleurs[k][3];
+                        if(k==nombrecouleurs-1)
+                            {
+                            content = "<p><font style='text-decoration: underline;'> TOTAL </font>: " + total + "</p>";
+                            bw.write(content + "\r\n");
+                            }
+                        }
+                    
                     for (int k=0;k<nombrecouleurs;k++)
                         {  
                         if (palette_couleurs[k][3]!=0 && k+1<10)
@@ -707,7 +769,6 @@ public class Mosaic_GUI extends javax.swing.JFrame
                         Logger.getLogger(Mosaic_GUI.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     
-                    //Compter les pixels des palettes
                     for(int o=0;o<nombrecouleurs;o++)
                         {
                         palette_couleurs[o][3]=0;
@@ -733,8 +794,7 @@ public class Mosaic_GUI extends javax.swing.JFrame
                                 }
                             }
                         }
-                    
-                    //Ecriture du patron HTML    
+                        
                     file = new File(dir+"index.html");
                     if (!file.exists()) 
                         {
@@ -752,8 +812,8 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     bw.write(content + "\r\n");
                     content = "<body>";
                     bw.write(content + "\r\n");
-                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V1</h1>";
-                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V1</h1>";
+                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V2</h1>";
+                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V2</h1>";
                     bw.write(content + "\r\n");
                     content = "<p style='text-align: center;'><img src=./image.png></p>";
                     bw.write(content + "\r\n");
@@ -762,8 +822,8 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     xxx=Patron.getWidth()*xxx;
                     float yyy = Float.parseFloat(temp);
                     yyy=Patron.getHeight()*yyy;
-                    if (lang==1) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Taille du projet : " + xxx + "x" + yyy + " mm</p>";
-                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm</p>";
+                    if (lang==1) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Taille du projet : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net'>Aller au site officiel</a></p>";
+                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net'>Go to the official website</a></p>";
                     bw.write(content + "\r\n");
                     if (lang==1) content = "<h2>Palette :</h2>";
                     else if (lang==2) content = "<h2>Color chart :</h2>";
@@ -771,6 +831,18 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     content = "<p>";
                     bw.write(content);
                     int nbpixels=0;
+                    
+                    int total=0;
+                    for (int k=0;k<nombrecouleurs;k++)
+                        {
+                        total=total+palette_couleurs[k][3];
+                        if(k==nombrecouleurs-1)
+                            {
+                            content = "<p><font style='text-decoration: underline;'> TOTAL </font>: " + total + "</p>";
+                            bw.write(content + "\r\n");
+                            }
+                        }
+                    
                     for (int k=0;k<nombrecouleurs;k++)
                         {  
                         if (palette_couleurs[k][3]!=0 && k+1<10)
@@ -903,7 +975,7 @@ public class Mosaic_GUI extends javax.swing.JFrame
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        //CREATION DE LA FENETRE "OUVRIR"
+
         final JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         if (lang==1)
@@ -915,11 +987,9 @@ public class Mosaic_GUI extends javax.swing.JFrame
             fc.setDialogTitle("Choose a directory to save your project");
             }
         
-        //SI ELLE RETOURNE UNE BONNE VALEUR
         int returnVal = fc.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) 
             {
-            //ON MEMORISE LE DOSSIER COMPLET GRACE AUX \\
             String dir = fc.getSelectedFile() +"\\";
             File file=new File(System.getProperty("user.home")+"\\thumbnail.png");
         
@@ -931,8 +1001,7 @@ public class Mosaic_GUI extends javax.swing.JFrame
                 float height=Choix1.getHeight();
                 String taillemotifs = jTextField1.getText();
                 String longueurpatron = jTextField2.getText();
-                
-                //Hack detection for no change size
+
                 float tailleprojet=0;
                 if(Float.parseFloat(longueurpatron)==0)
                     {
@@ -966,7 +1035,6 @@ public class Mosaic_GUI extends javax.swing.JFrame
                         Logger.getLogger(Mosaic_GUI.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     
-                    //Compter les pixels des palettes
                     for(int o=0;o<nombrecouleurs;o++)
                         {
                         palette_couleurs[o][3]=0;
@@ -991,8 +1059,7 @@ public class Mosaic_GUI extends javax.swing.JFrame
                                 }
                             }
                         }
-                    
-                    //Ecriture du patron HTML    
+                        
                     file = new File(dir+"index.html");
                     if (!file.exists()) 
                         {
@@ -1010,8 +1077,8 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     bw.write(content + "\r\n");
                     content = "<body>";
                     bw.write(content + "\r\n");
-                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V1</h1>";
-                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V1</h1>";
+                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V2</h1>";
+                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V2</h1>";
                     bw.write(content + "\r\n");
                     content = "<p style='text-align: center;'><img src=./image.png></p>";
                     bw.write(content + "\r\n");
@@ -1020,8 +1087,8 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     xxx=Patron.getWidth()*xxx;
                     float yyy = Float.parseFloat(temp);
                     yyy=Patron.getHeight()*yyy;
-                    if (lang==1) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Taille du projet : " + xxx + "x" + yyy + " mm</p>";
-                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm</p>";
+                    if (lang==1) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Taille du projet : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net'>Aller au site officiel</a></p>";
+                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net'>Go to the official website</a></p>";
                     bw.write(content + "\r\n");
                     if (lang==1) content = "<h2>Palette :</h2>";
                     else if (lang==2) content = "<h2>Color chart :</h2>";
@@ -1029,6 +1096,18 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     content = "<p>";
                     bw.write(content);
                     int nbpixels=0;
+                    
+                    int total=0;
+                    for (int k=0;k<nombrecouleurs;k++)
+                        {
+                        total=total+palette_couleurs[k][3];
+                        if(k==nombrecouleurs-1)
+                            {
+                            content = "<p><font style='text-decoration: underline;'> TOTAL </font>: " + total + "</p>";
+                            bw.write(content + "\r\n");
+                            }
+                        }
+                    
                     for (int k=0;k<nombrecouleurs;k++)
                         {  
                         if (palette_couleurs[k][3]!=0 && k+1<10)
@@ -1161,7 +1240,6 @@ public class Mosaic_GUI extends javax.swing.JFrame
                         Logger.getLogger(Mosaic_GUI.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     
-                    //Compter les pixels des palettes
                     for(int o=0;o<nombrecouleurs;o++)
                         {
                         palette_couleurs[o][3]=0;
@@ -1186,8 +1264,7 @@ public class Mosaic_GUI extends javax.swing.JFrame
                                 }
                             }
                         }
-                    
-                    //Ecriture du patron HTML    
+                        
                     file = new File(dir+"index.html");
                     if (!file.exists()) 
                         {
@@ -1205,8 +1282,8 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     bw.write(content + "\r\n");
                     content = "<body>";
                     bw.write(content + "\r\n");
-                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V1</h1>";
-                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V1</h1>";
+                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V2</h1>";
+                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V2</h1>";
                     bw.write(content + "\r\n");
                     content = "<p style='text-align: center;'><img src=./image.png></p>";
                     bw.write(content + "\r\n");
@@ -1215,8 +1292,8 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     xxx=Patron.getWidth()*xxx;
                     float yyy = Float.parseFloat(temp);
                     yyy=Patron.getHeight()*yyy;
-                    if (lang==1) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Taille du projet : " + xxx + "x" + yyy + " mm</p>";
-                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm</p>";
+                    if (lang==1) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Taille du projet : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net'>Aller au site officiel</a></p>";
+                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net'>Go to the official website</a></p>";
                     bw.write(content + "\r\n");
                     if (lang==1) content = "<h2>Palette :</h2>";
                     else if (lang==2) content = "<h2>Color chart :</h2>";
@@ -1224,6 +1301,18 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     content = "<p>";
                     bw.write(content);
                     int nbpixels=0;
+                    
+                    int total=0;
+                    for (int k=0;k<nombrecouleurs;k++)
+                        {
+                        total=total+palette_couleurs[k][3];
+                        if(k==nombrecouleurs-1)
+                            {
+                            content = "<p><font style='text-decoration: underline;'> TOTAL </font>: " + total + "</p>";
+                            bw.write(content + "\r\n");
+                            }
+                        }
+                    
                     for (int k=0;k<nombrecouleurs;k++)
                         {  
                         if (palette_couleurs[k][3]!=0 && k+1<10)
@@ -1383,7 +1472,7 @@ public class Mosaic_GUI extends javax.swing.JFrame
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         lang=1;
         
-        jLabel1.setText("Version 1. Courriel : mosaicgui.imbert@sfr.fr");
+        jLabel1.setText("Version 2. Courriel : mosaicgui.imbert@gmail.com");
         jLabel2.setText("Etape 1 : Charger une image");
         jLabel3.setText("Etape 2 : Définir la palette à utiliser");
         jLabel4.setText("Etape 3 : Définir les paramètres de votre projet");
@@ -1403,7 +1492,7 @@ public class Mosaic_GUI extends javax.swing.JFrame
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         lang=2;
         
-        jLabel1.setText("Version 1. Mail : mosaicgui.imbert@sfr.fr");
+        jLabel1.setText("Version 2. Mail : mosaicgui.imbert@gmail.com");
         jLabel2.setText("Step 1 : Load a picture");
         jLabel3.setText("Step 2 : Choose your color chart");
         jLabel4.setText("Step 3 : Configure your project");

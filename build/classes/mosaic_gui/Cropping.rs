@@ -1,0 +1,2 @@
+mosaic_gui.Cropping
+mosaic_gui.ClipMover
