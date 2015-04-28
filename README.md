@@ -2,7 +2,7 @@
 
 Official software to make beads, mosaic or pencil art easily
 
-V2 created by Pierre-Aimé IMBERT
+V2.1 created by Pierre-Aimé IMBERT
 
 GPL3 LICENCE for MOSAIC-GUI versions and sources
 
