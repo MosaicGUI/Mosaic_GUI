@@ -80,11 +80,11 @@ public class Mosaic_GUI extends javax.swing.JFrame
         jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Mosaic_GUI V2");
+        setTitle("Mosaic_GUI V2.1");
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
-        jLabel1.setText("Version 2. Courriel : mosaicgui.imbert@gmail.com");
+        jLabel1.setText("Version 2.1. Courriel : mosaicgui.imbert@gmail.com");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Etape 1 : Charger une image");
@@ -219,42 +219,39 @@ public class Mosaic_GUI extends javax.swing.JFrame
                         .addGap(18, 18, 18)
                         .addComponent(jButton6))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5)
-                        .addGap(32, 52, Short.MAX_VALUE))
+                        .addGap(32, 56, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
@@ -337,7 +334,17 @@ public class Mosaic_GUI extends javax.swing.JFrame
                 
                 BufferedImage carac=ImageIO.read(file);
                 
-                if(carac.getHeight()>1000 && carac.getHeight()<=carac.getWidth())
+                if(carac.getHeight()<151 && carac.getWidth()<151)
+                    {
+                    File outputfile = new File(System.getProperty("user.home")+"\\thumbnail.png");
+                    try {
+                        ImageIO.write(carac, "png", outputfile);
+                        } catch (IOException ex) {
+                        Logger.getLogger(Mosaic_GUI.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                
+                else if(carac.getHeight()>1000 && carac.getHeight()<=carac.getWidth())
                     {
                     float factor=(float)1000/(float)carac.getHeight();
                     float width=(float)carac.getWidth()*factor;
@@ -598,8 +605,8 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     bw.write(content + "\r\n");
                     content = "<body>";
                     bw.write(content + "\r\n");
-                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V2</h1>";
-                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V2</h1>";
+                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V2.1</h1>";
+                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V2.1</h1>";
                     bw.write(content + "\r\n");
                     content = "<p style='text-align: center;'><img src=./image.png></p>";
                     bw.write(content + "\r\n");
@@ -609,7 +616,7 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     float yyy = Float.parseFloat(temp);
                     yyy=Patron.getHeight()*yyy;
                     if (lang==1) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Taille du projet : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net'>Aller au site officiel</a></p>";
-                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net'>Go to the official website</a></p>";
+                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net/indexen.html'>Go to the official website</a></p>";
                     bw.write(content + "\r\n");
                     if (lang==1) content = "<h2>Palette :</h2>";
                     else if (lang==2) content = "<h2>Color chart :</h2>";
@@ -812,8 +819,8 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     bw.write(content + "\r\n");
                     content = "<body>";
                     bw.write(content + "\r\n");
-                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V2</h1>";
-                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V2</h1>";
+                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V2.1</h1>";
+                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V2.1</h1>";
                     bw.write(content + "\r\n");
                     content = "<p style='text-align: center;'><img src=./image.png></p>";
                     bw.write(content + "\r\n");
@@ -823,7 +830,7 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     float yyy = Float.parseFloat(temp);
                     yyy=Patron.getHeight()*yyy;
                     if (lang==1) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Taille du projet : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net'>Aller au site officiel</a></p>";
-                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net'>Go to the official website</a></p>";
+                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net/indexen.html'>Go to the official website</a></p>";
                     bw.write(content + "\r\n");
                     if (lang==1) content = "<h2>Palette :</h2>";
                     else if (lang==2) content = "<h2>Color chart :</h2>";
@@ -1077,8 +1084,8 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     bw.write(content + "\r\n");
                     content = "<body>";
                     bw.write(content + "\r\n");
-                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V2</h1>";
-                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V2</h1>";
+                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V2.1</h1>";
+                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V2.1</h1>";
                     bw.write(content + "\r\n");
                     content = "<p style='text-align: center;'><img src=./image.png></p>";
                     bw.write(content + "\r\n");
@@ -1088,7 +1095,7 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     float yyy = Float.parseFloat(temp);
                     yyy=Patron.getHeight()*yyy;
                     if (lang==1) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Taille du projet : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net'>Aller au site officiel</a></p>";
-                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net'>Go to the official website</a></p>";
+                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net/indexen.html'>Go to the official website</a></p>";
                     bw.write(content + "\r\n");
                     if (lang==1) content = "<h2>Palette :</h2>";
                     else if (lang==2) content = "<h2>Color chart :</h2>";
@@ -1282,8 +1289,8 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     bw.write(content + "\r\n");
                     content = "<body>";
                     bw.write(content + "\r\n");
-                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V2</h1>";
-                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V2</h1>";
+                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V2.1</h1>";
+                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V2.1</h1>";
                     bw.write(content + "\r\n");
                     content = "<p style='text-align: center;'><img src=./image.png></p>";
                     bw.write(content + "\r\n");
@@ -1293,7 +1300,7 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     float yyy = Float.parseFloat(temp);
                     yyy=Patron.getHeight()*yyy;
                     if (lang==1) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Taille du projet : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net'>Aller au site officiel</a></p>";
-                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net'>Go to the official website</a></p>";
+                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net/indexen.html'>Go to the official website</a></p>";
                     bw.write(content + "\r\n");
                     if (lang==1) content = "<h2>Palette :</h2>";
                     else if (lang==2) content = "<h2>Color chart :</h2>";
@@ -1472,7 +1479,7 @@ public class Mosaic_GUI extends javax.swing.JFrame
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         lang=1;
         
-        jLabel1.setText("Version 2. Courriel : mosaicgui.imbert@gmail.com");
+        jLabel1.setText("Version 2.1. Courriel : mosaicgui.imbert@gmail.com");
         jLabel2.setText("Etape 1 : Charger une image");
         jLabel3.setText("Etape 2 : Définir la palette à utiliser");
         jLabel4.setText("Etape 3 : Définir les paramètres de votre projet");
@@ -1492,7 +1499,7 @@ public class Mosaic_GUI extends javax.swing.JFrame
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         lang=2;
         
-        jLabel1.setText("Version 2. Mail : mosaicgui.imbert@gmail.com");
+        jLabel1.setText("Version 2.1. Mail : mosaicgui.imbert@gmail.com");
         jLabel2.setText("Step 1 : Load a picture");
         jLabel3.setText("Step 2 : Choose your color chart");
         jLabel4.setText("Step 3 : Configure your project");
