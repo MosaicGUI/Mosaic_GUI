@@ -80,11 +80,11 @@ public class Mosaic_GUI extends javax.swing.JFrame
         jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Mosaic_GUI V2.1");
+        setTitle("Mosaic_GUI V3.0");
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
-        jLabel1.setText("Version 2.1. Courriel : mosaicgui.imbert@gmail.com");
+        jLabel1.setText("Version 3.0");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Etape 1 : Charger une image");
@@ -208,9 +208,6 @@ public class Mosaic_GUI extends javax.swing.JFrame
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,39 +216,43 @@ public class Mosaic_GUI extends javax.swing.JFrame
                         .addGap(18, 18, 18)
                         .addComponent(jButton6))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5)
-                        .addGap(32, 56, Short.MAX_VALUE))
+                        .addGap(32, 90, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
@@ -430,10 +431,6 @@ public class Mosaic_GUI extends javax.swing.JFrame
                 Logger.getLogger(Mosaic_GUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } 
-        else 
-            {
-            System.out.println("ABORTED!!!");
-            }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -493,10 +490,6 @@ public class Mosaic_GUI extends javax.swing.JFrame
                  Logger.getLogger(Mosaic_GUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
             scanner.close();
-            }
-        else 
-            {
-            System.out.println("ABORTED!!!");
             }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -605,8 +598,8 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     bw.write(content + "\r\n");
                     content = "<body>";
                     bw.write(content + "\r\n");
-                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V2.1</h1>";
-                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V2.1</h1>";
+                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V3.0</h1>";
+                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V3.0</h1>";
                     bw.write(content + "\r\n");
                     content = "<p style='text-align: center;'><img src=./image.png></p>";
                     bw.write(content + "\r\n");
@@ -615,8 +608,8 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     xxx=Patron.getWidth()*xxx;
                     float yyy = Float.parseFloat(temp);
                     yyy=Patron.getHeight()*yyy;
-                    if (lang==1) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Taille du projet : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net'>Aller au site officiel</a></p>";
-                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net/indexen.html'>Go to the official website</a></p>";
+                    if (lang==1) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Taille du projet : " + xxx + "x" + yyy + " mm.</p>";
+                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm.</p>";
                     bw.write(content + "\r\n");
                     if (lang==1) content = "<h2>Palette :</h2>";
                     else if (lang==2) content = "<h2>Color chart :</h2>";
@@ -819,8 +812,8 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     bw.write(content + "\r\n");
                     content = "<body>";
                     bw.write(content + "\r\n");
-                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V2.1</h1>";
-                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V2.1</h1>";
+                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V3.0</h1>";
+                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V3.0</h1>";
                     bw.write(content + "\r\n");
                     content = "<p style='text-align: center;'><img src=./image.png></p>";
                     bw.write(content + "\r\n");
@@ -829,8 +822,8 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     xxx=Patron.getWidth()*xxx;
                     float yyy = Float.parseFloat(temp);
                     yyy=Patron.getHeight()*yyy;
-                    if (lang==1) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Taille du projet : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net'>Aller au site officiel</a></p>";
-                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net/indexen.html'>Go to the official website</a></p>";
+                    if (lang==1) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Taille du projet : " + xxx + "x" + yyy + " mm.</p>";
+                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm.</p>";
                     bw.write(content + "\r\n");
                     if (lang==1) content = "<h2>Palette :</h2>";
                     else if (lang==2) content = "<h2>Color chart :</h2>";
@@ -975,10 +968,6 @@ public class Mosaic_GUI extends javax.swing.JFrame
                 Logger.getLogger(Mosaic_GUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        else
-            {
-            System.out.println("ABORTED!!!");
-            }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -1055,11 +1044,12 @@ public class Mosaic_GUI extends javax.swing.JFrame
                             for (int k=0;k<nombrecouleurs;k++)
                                 {  
                                 Color mycolor = new Color(Patron.getRGB(j, i));
+                                int Alpha = Patron.getRGB(j,i)>>24&0xFF;
                                 int Rdiff = mycolor.getRed();
                                 int Gdiff = mycolor.getGreen();
                                 int Bdiff = mycolor.getBlue();
                     
-                                if (Rdiff==palette_couleurs[k][0] && Gdiff==palette_couleurs[k][1] && Bdiff==palette_couleurs[k][2])
+                                if (Alpha==255 && Rdiff==palette_couleurs[k][0] && Gdiff==palette_couleurs[k][1] && Bdiff==palette_couleurs[k][2])
                                     {
                                     palette_couleurs[k][3]=palette_couleurs[k][3]+1;
                                     }
@@ -1084,8 +1074,8 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     bw.write(content + "\r\n");
                     content = "<body>";
                     bw.write(content + "\r\n");
-                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V2.1</h1>";
-                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V2.1</h1>";
+                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V3.0</h1>";
+                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V3.0</h1>";
                     bw.write(content + "\r\n");
                     content = "<p style='text-align: center;'><img src=./image.png></p>";
                     bw.write(content + "\r\n");
@@ -1094,8 +1084,8 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     xxx=Patron.getWidth()*xxx;
                     float yyy = Float.parseFloat(temp);
                     yyy=Patron.getHeight()*yyy;
-                    if (lang==1) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Taille du projet : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net'>Aller au site officiel</a></p>";
-                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net/indexen.html'>Go to the official website</a></p>";
+                    if (lang==1) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Taille du projet : " + xxx + "x" + yyy + " mm.</p>";
+                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm.</p>";
                     bw.write(content + "\r\n");
                     if (lang==1) content = "<h2>Palette :</h2>";
                     else if (lang==2) content = "<h2>Color chart :</h2>";
@@ -1168,46 +1158,54 @@ public class Mosaic_GUI extends javax.swing.JFrame
                                     if(j<Patron.getWidth() && i<Patron.getHeight())
                                         {
                                         Color color=new Color(Patron.getRGB(j, i));
+                                        int Alpha = Patron.getRGB(j,i)>>24&0xFF;
                                         int rcolor = color.getRed();
                                         int gcolor = color.getGreen();
                                         int bcolor = color.getBlue();
-                                        for (int k=0;k<nombrecouleurs;k++)
+                                        if(Alpha==255)
                                             {
-                                            if(palette_couleurs[k][0]==rcolor && palette_couleurs[k][1]==gcolor && palette_couleurs[k][2]==bcolor)
+                                            for (int k=0;k<nombrecouleurs;k++)
                                                 {
-                                                int l=k+1;
-                                                if(l<10)
+                                                if(palette_couleurs[k][0]==rcolor && palette_couleurs[k][1]==gcolor && palette_couleurs[k][2]==bcolor)
                                                     {
-                                                    if(rcolor<170 && gcolor<170 && bcolor<170)
+                                                    int l=k+1;
+                                                    if(l<10)
                                                         {
-                                                        String hex = String.format("#%02x%02x%02x", rcolor, gcolor, bcolor);
-                                                        bw.write("<td bgcolor='"+hex+"' style='font-size: 10px; width:10px; height:10px'><font color='#FFFFFF'>0"+l+"</font></td>"+"\r\n");
+                                                        if(rcolor<170 && gcolor<170 && bcolor<170)
+                                                            {
+                                                            String hex = String.format("#%02x%02x%02x", rcolor, gcolor, bcolor);
+                                                            bw.write("<td bgcolor='"+hex+"' style='font-size: 10px; width:10px; height:10px'><font color='#FFFFFF'>0"+l+"</font></td>"+"\r\n");
+                                                            }
+                                                        else
+                                                            {
+                                                            String hex = String.format("#%02x%02x%02x", rcolor, gcolor, bcolor);
+                                                            bw.write("<td bgcolor='"+hex+"' style='font-size: 10px; width:10px; height:10px'>0"+l+"</td>"+"\r\n");
+                                                            }
                                                         }
                                                     else
                                                         {
-                                                        String hex = String.format("#%02x%02x%02x", rcolor, gcolor, bcolor);
-                                                        bw.write("<td bgcolor='"+hex+"' style='font-size: 10px; width:10px; height:10px'>0"+l+"</td>"+"\r\n");
-                                                        }
-                                                    }
-                                                else
-                                                    {
-                                                    if(rcolor<170 && gcolor<170 && bcolor<170)
-                                                        {
-                                                        String hex = String.format("#%02x%02x%02x", rcolor, gcolor, bcolor);
-                                                        bw.write("<td bgcolor='"+hex+"' style='font-size: 10px; width:10px; height:10px'><font color='#FFFFFF'>"+l+"</font></td>"+"\r\n");
-                                                        }
-                                                    else
-                                                        {
-                                                        String hex = String.format("#%02x%02x%02x", rcolor, gcolor, bcolor);
-                                                        bw.write("<td bgcolor='"+hex+"' style='font-size: 10px; width:10px; height:10px;'>"+l+"</td>"+"\r\n");
+                                                        if(rcolor<170 && gcolor<170 && bcolor<170)
+                                                            {
+                                                            String hex = String.format("#%02x%02x%02x", rcolor, gcolor, bcolor);
+                                                            bw.write("<td bgcolor='"+hex+"' style='font-size: 10px; width:10px; height:10px'><font color='#FFFFFF'>"+l+"</font></td>"+"\r\n");
+                                                            }
+                                                        else
+                                                            {
+                                                            String hex = String.format("#%02x%02x%02x", rcolor, gcolor, bcolor);
+                                                            bw.write("<td bgcolor='"+hex+"' style='font-size: 10px; width:10px; height:10px;'>"+l+"</td>"+"\r\n");
+                                                            }
                                                         }
                                                     }
                                                 }
                                             }
+                                        else
+                                            {
+                                            bw.write("<td style='font-size: 10px; width:10px; height:10px; font-weight:bold;'><font color='#FFFFFF'>X</font></td>"+"\r\n");
+                                            }
                                         }
                                     else
                                         {
-                                        bw.write("<td style='font-size: 10px; width:10px; height:10px; font-weight:bold;'><font color='#FFFFFF'>X</font></td>"+"\r\n");
+                                        bw.write("<td style='font-size: 10px; width:10px; height:10px; font-weight:bold;'><font color='#FFFFF'>X</font></td>"+"\r\n");
                                         }
                                     }
                                 content="</tr>";
@@ -1260,11 +1258,12 @@ public class Mosaic_GUI extends javax.swing.JFrame
                             for (int k=0;k<nombrecouleurs;k++)
                                 {  
                                 Color mycolor = new Color(Patron.getRGB(j, i));
+                                int Alpha = Patron.getRGB(j,i)>>24&0xFF;
                                 int Rdiff = mycolor.getRed();
                                 int Gdiff = mycolor.getGreen();
                                 int Bdiff = mycolor.getBlue();
                     
-                                if (Rdiff==palette_couleurs[k][0] && Gdiff==palette_couleurs[k][1] && Bdiff==palette_couleurs[k][2])
+                                if (Alpha==255 && Rdiff==palette_couleurs[k][0] && Gdiff==palette_couleurs[k][1] && Bdiff==palette_couleurs[k][2])
                                     {
                                     palette_couleurs[k][3]=palette_couleurs[k][3]+1;
                                     }
@@ -1289,8 +1288,8 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     bw.write(content + "\r\n");
                     content = "<body>";
                     bw.write(content + "\r\n");
-                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V2.1</h1>";
-                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V2.1</h1>";
+                    if (lang==1) content = "<h1 style='text-align: center;'>Patron avec Mosaic GUI V3.0</h1>";
+                    else if (lang==2) content = "<h1 style='text-align: center;'>Pattern with Mosaic GUI V3.0</h1>";
                     bw.write(content + "\r\n");
                     content = "<p style='text-align: center;'><img src=./image.png></p>";
                     bw.write(content + "\r\n");
@@ -1299,8 +1298,8 @@ public class Mosaic_GUI extends javax.swing.JFrame
                     xxx=Patron.getWidth()*xxx;
                     float yyy = Float.parseFloat(temp);
                     yyy=Patron.getHeight()*yyy;
-                    if (lang==1) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Taille du projet : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net'>Aller au site officiel</a></p>";
-                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm.<br><a href='http://mosaicgui.ddns.net/indexen.html'>Go to the official website</a></p>";
+                    if (lang==1) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Taille du projet : " + xxx + "x" + yyy + " mm.</p>";
+                    else if (lang==2) content = "<p style='text-align: center; font-size: 14px; font-style:italic;'>Size of your project : " + xxx + "x" + yyy + " mm.</p>";
                     bw.write(content + "\r\n");
                     if (lang==1) content = "<h2>Palette :</h2>";
                     else if (lang==2) content = "<h2>Color chart :</h2>";
@@ -1373,46 +1372,54 @@ public class Mosaic_GUI extends javax.swing.JFrame
                                     if(j<Patron.getWidth() && i<Patron.getHeight())
                                         {
                                         Color color=new Color(Patron.getRGB(j, i));
+                                        int Alpha = Patron.getRGB(j,i)>>24&0xFF;
                                         int rcolor = color.getRed();
                                         int gcolor = color.getGreen();
                                         int bcolor = color.getBlue();
-                                        for (int k=0;k<nombrecouleurs;k++)
+                                        if(Alpha==255)
                                             {
-                                            if(palette_couleurs[k][0]==rcolor && palette_couleurs[k][1]==gcolor && palette_couleurs[k][2]==bcolor)
+                                            for (int k=0;k<nombrecouleurs;k++)
                                                 {
-                                                int l=k+1;
-                                                if(l<10)
+                                                if(palette_couleurs[k][0]==rcolor && palette_couleurs[k][1]==gcolor && palette_couleurs[k][2]==bcolor)
                                                     {
-                                                    if(rcolor<170 && gcolor<170 && bcolor<170)
+                                                    int l=k+1;
+                                                    if(l<10)
                                                         {
-                                                        String hex = String.format("#%02x%02x%02x", rcolor, gcolor, bcolor);
-                                                        bw.write("<td bgcolor='"+hex+"' style='font-size: 10px; width:10px; height:10px'><font color='#FFFFFF'>0"+l+"</font></td>"+"\r\n");
+                                                        if(rcolor<170 && gcolor<170 && bcolor<170)
+                                                            {
+                                                            String hex = String.format("#%02x%02x%02x", rcolor, gcolor, bcolor);
+                                                            bw.write("<td bgcolor='"+hex+"' style='font-size: 10px; width:10px; height:10px'><font color='#FFFFFF'>0"+l+"</font></td>"+"\r\n");
+                                                            }
+                                                        else
+                                                            {
+                                                            String hex = String.format("#%02x%02x%02x", rcolor, gcolor, bcolor);
+                                                            bw.write("<td bgcolor='"+hex+"' style='font-size: 10px; width:10px; height:10px'>0"+l+"</td>"+"\r\n");
+                                                            }
                                                         }
                                                     else
                                                         {
-                                                        String hex = String.format("#%02x%02x%02x", rcolor, gcolor, bcolor);
-                                                        bw.write("<td bgcolor='"+hex+"' style='font-size: 10px; width:10px; height:10px'>0"+l+"</td>"+"\r\n");
-                                                        }
-                                                    }
-                                                else
-                                                    {
-                                                    if(rcolor<170 && gcolor<170 && bcolor<170)
-                                                        {
-                                                        String hex = String.format("#%02x%02x%02x", rcolor, gcolor, bcolor);
-                                                        bw.write("<td bgcolor='"+hex+"' style='font-size: 10px; width:10px; height:10px'><font color='#FFFFFF'>"+l+"</font></td>"+"\r\n");
-                                                        }
-                                                    else
-                                                        {
-                                                        String hex = String.format("#%02x%02x%02x", rcolor, gcolor, bcolor);
-                                                        bw.write("<td bgcolor='"+hex+"' style='font-size: 10px; width:10px; height:10px;'>"+l+"</td>"+"\r\n");
+                                                        if(rcolor<170 && gcolor<170 && bcolor<170)
+                                                            {
+                                                            String hex = String.format("#%02x%02x%02x", rcolor, gcolor, bcolor);
+                                                            bw.write("<td bgcolor='"+hex+"' style='font-size: 10px; width:10px; height:10px'><font color='#FFFFFF'>"+l+"</font></td>"+"\r\n");
+                                                            }
+                                                        else
+                                                            {
+                                                            String hex = String.format("#%02x%02x%02x", rcolor, gcolor, bcolor);
+                                                            bw.write("<td bgcolor='"+hex+"' style='font-size: 10px; width:10px; height:10px;'>"+l+"</td>"+"\r\n");
+                                                            }
                                                         }
                                                     }
                                                 }
                                             }
+                                        else
+                                            {
+                                            bw.write("<td style='font-size: 10px; width:10px; height:10px; font-weight:bold;'><font color='#FFFFFF'>X</font></td>"+"\r\n");
+                                            }
                                         }
                                     else
                                         {
-                                        bw.write("<td style='font-size: 10px; width:10px; height:10px; font-weight:bold;'><font color='#FFFFFF'>X</font></td>"+"\r\n");
+                                        bw.write("<td style='font-size: 10px; width:10px; height:10px; font-weight:bold;'><font color='#FFFFF'>X</font></td>"+"\r\n");
                                         }
                                     }
                                 content="</tr>";
@@ -1436,10 +1443,6 @@ public class Mosaic_GUI extends javax.swing.JFrame
                 {
                 Logger.getLogger(Mosaic_GUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
-        else
-            {
-            System.out.println("ABORTED!!!");
             }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -1479,7 +1482,7 @@ public class Mosaic_GUI extends javax.swing.JFrame
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         lang=1;
         
-        jLabel1.setText("Version 2.1. Courriel : mosaicgui.imbert@gmail.com");
+        jLabel1.setText("Version 3.0");
         jLabel2.setText("Etape 1 : Charger une image");
         jLabel3.setText("Etape 2 : Définir la palette à utiliser");
         jLabel4.setText("Etape 3 : Définir les paramètres de votre projet");
@@ -1499,7 +1502,7 @@ public class Mosaic_GUI extends javax.swing.JFrame
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         lang=2;
         
-        jLabel1.setText("Version 2.1. Mail : mosaicgui.imbert@gmail.com");
+        jLabel1.setText("Version 3.0");
         jLabel2.setText("Step 1 : Load a picture");
         jLabel3.setText("Step 2 : Choose your color chart");
         jLabel4.setText("Step 3 : Configure your project");
